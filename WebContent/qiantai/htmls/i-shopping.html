@@ -1,0 +1,526 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>掌上超市购物商城</title>
+  <link media="all" href="../../css/i-shopping.css" rel="stylesheet">
+  <style>
+  #list{
+  background-color:#fff;
+  }
+  </style>
+</head>
+
+<body onload="loadAll();">
+
+<div class="swiper-container">
+      <a href="i-search.jsp"><span class="back">返回<span></a>
+      <span class="title">购物车</span>
+</div>
+
+<!-- <div class="nav-lf">
+<ul id="nav">
+  <li class="current"><a href="#st1">分类一</a><b></b></li>
+  <li><a href="#st2">分类二</a><b>1</b></li>
+  <li><a href="#st3">分类三</a><b>3</b></li>
+  <li><a href="#st4">分类四</a><b>6</b></li>
+</ul>
+</div> -->
+
+<div id="list" class="container">
+
+  <!-- <div id="st1">
+    
+ 
+    <div class="prt-lt">
+        <div class="lt-lt"><img src="../images/naifen.jpg"></div>
+        <div class="lt-ct">
+            <p>商品1</p>
+            <p class="pr">¥<span class="price">60.00</span></p>
+        </div>
+        <div class="lt-rt">
+            <input type="button" class="minus"  value="-">
+            <input type="text" class="result" value="0">
+            <input type="button" class="add" value="+">
+        </div>
+    </div>
+</div>     -->
+</div>
+  
+
+<footer>
+	<div class="ft-lt">
+        <p>合计:<span id="total" class="total">0.00元</span><span class="nm">(<label class="share"></label>份)</span></p>
+    </div>
+    <div class="ft-rt">
+    	<p>选好了</p>
+    </div>
+</footer>
+
+
+<script type="text/javascript" src="../js/Adaptive.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../js/1swiper.min.js"></script>
+<script type="text/javascript" src="../js/jquery.nav1.js"></script>
+<script type="text/javascript">
+var swiper = new Swiper('.swiper-container', {
+	pagination: '.swiper-pagination',
+	paginationClickable: true,
+	spaceBetween: 30,
+});
+
+$(function(){
+	$('#nav').onePageNav();
+});
+
+</script>
+<script> 
+function fn1(){
+	$(function(){ 
+
+		$(".add").click(function(){
+		var t=$(this).parent().find('input[class*=result]'); 
+		t.val(parseInt(t.val())+1);
+		setTotal(); 
+		})
+		 
+		$(".minus").click(function(){ 
+		var t=$(this).parent().find('input[class*=result]'); 
+		t.val(parseInt(t.val())-1);
+		if(parseInt(t.val())<0){ 
+		t.val(0); 
+		} 
+		setTotal(); 
+
+
+		})
+		 
+		function setTotal(){ 
+		var s=0;
+		var v=0;
+		var n=0;
+		<!--计算总额--> 
+		$(".lt-rt").each(function(){ 
+		s+=parseInt($(this).find('input[class*=result]').val())*parseFloat($(this).siblings().find('span[class*=price]').text()); 
+
+		});
+
+		<!--计算菜种-->
+		var nIn = $("li.current a").attr("href");
+		$(nIn+" input[type='text']").each(function() {
+			if($(this).val()!=0){
+				n++;
+			}
+		});
+
+		<!--计算总份数-->
+		$("input[type='text']").each(function(){
+			v += parseInt($(this).val());
+		});
+		if(n>0){
+			$(".current b").html(n).show();		
+			}else{
+			$(".current b").hide();		
+				}	
+		$(".share").html(v);
+		$("#total").html(s.toFixed(2)); 
+		} 
+		setTotal(); 
+
+		}) 
+}
+
+
+</script> 
+<script type="text/javascript" src="js/waypoints.min.js"></script>
+<script type="text/javascript" src="js/navbar2.js"></script>
+<script>
+//打开数据库
+var db=openDatabase('contactdb5511','','local database demo',204800);
+//保存数据
+function save1(){
+   var img1=document.getElementById("img1").src;
+   var mingcheng1=document.getElementById("title1").innerHTML;
+   var price1=document.getElementById("price1").innerHTML;
+    //创建时间  
+   var time = new Date().getTime(); 
+   db.transaction(function(tx){  
+    tx.executeSql('insert into contact values(?,?,?,?)',[img1,mingcheng1,price1,time],onSuccess,onError);  
+});  
+}
+function save2(){
+    var img2=document.getElementById("img2").src;
+    var mingcheng2=document.getElementById("title2").innerHTML;
+    var price2=document.getElementById("price2").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img2,mingcheng2,price2,time],onSuccess,onError);  
+ });  
+}
+function save3(){
+    var img3=document.getElementById("img3").src;
+    var mingcheng3=document.getElementById("title3").innerHTML;
+    var price3=document.getElementById("price3").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img3,mingcheng3,price3,time],onSuccess,onError);  
+ });  
+}
+function save4(){
+    var img4=document.getElementById("img4").src;
+    var mingcheng4=document.getElementById("title4").innerHTML;
+    var price4=document.getElementById("price4").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img4,mingcheng4,price4,time],onSuccess,onError);  
+ });  
+}
+function save5(){
+    var img5=document.getElementById("img5").src;
+    var mingcheng5=document.getElementById("title5").innerHTML;
+    var price5=document.getElementById("price5").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img5,mingcheng5,price5,time],onSuccess,onError);  
+ });  
+}
+function save5(){
+    var img5=document.getElementById("img5").src;
+    var mingcheng2=document.getElementById("title5").innerHTML;
+    var price5=document.getElementById("price5").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img5,mingcheng5,price5,time],onSuccess,onError);  
+ });  
+}
+function save6(){
+    var img6=document.getElementById("img6").src;
+    var mingcheng6=document.getElementById("title6").innerHTML;
+    var price6=document.getElementById("price6").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img6,mingcheng6,price6,time],onSuccess,onError);  
+ });  
+}
+function save7(){
+    var img7=document.getElementById("img7").src;
+    var mingcheng7=document.getElementById("title7").innerHTML;
+    var price7=document.getElementById("price7").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img7,mingcheng7,price7,time],onSuccess,onError);  
+ });  
+}
+function save8(){
+    var img8=document.getElementById("img8").src;
+    var mingcheng8=document.getElementById("title8").innerHTML;
+    var price8=document.getElementById("price8").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img8,mingcheng8,price8,time],onSuccess,onError);  
+ });  
+}
+function save9(){
+    var img9=document.getElementById("img9").src;
+    var mingcheng9=document.getElementById("title9").innerHTML;
+    var price9=document.getElementById("price9").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img9,mingcheng9,price9,time],onSuccess,onError);  
+ });  
+}
+function save10(){
+    var img10=document.getElementById("img10").src;
+    var mingcheng10=document.getElementById("title10").innerHTML;
+    var price10=document.getElementById("price10").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img10,mingcheng10,price10,time],onSuccess,onError);  
+ });  
+}
+function save11(){
+    var img11=document.getElementById("img11").src;
+    var mingcheng11=document.getElementById("title11").innerHTML;
+    var price11=document.getElementById("price11").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img11,mingcheng11,price11,time],onSuccess,onError);  
+ });  
+}
+function save12(){
+    var img12=document.getElementById("img12").src;
+    var mingcheng12=document.getElementById("title12").innerHTML;
+    var price12=document.getElementById("price12").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img12,mingcheng12,price12,time],onSuccess,onError);  
+ });  
+}
+function save13(){
+    var img13=document.getElementById("img13").src;
+    var mingcheng13=document.getElementById("title13").innerHTML;
+    var price13=document.getElementById("price13").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img13,mingcheng13,price13,time],onSuccess,onError);  
+ });  
+}
+function save14(){
+    var img14=document.getElementById("img14").src;
+    var mingcheng14=document.getElementById("title14").innerHTML;
+    var price14=document.getElementById("price14").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img14,mingcheng14,price14,time],onSuccess,onError);  
+ });  
+}
+function save15(){
+    var img15=document.getElementById("img15").src;
+    var mingcheng15=document.getElementById("title15").innerHTML;
+    var price15=document.getElementById("price15").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img15,mingcheng15,price15,time],onSuccess,onError);  
+ });  
+}
+function save16(){
+    var img16=document.getElementById("img16").src;
+    var mingcheng16=document.getElementById("title16").innerHTML;
+    var price16=document.getElementById("price16").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img16,mingcheng16,price16,time],onSuccess,onError);  
+ });  
+}
+function save17(){
+    var img17=document.getElementById("img17").src;
+    var mingcheng17=document.getElementById("title17").innerHTML;
+    var price17=document.getElementById("price17").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img17,mingcheng17,price17,time],onSuccess,onError);  
+ });  
+}
+function save18(){
+    var img18=document.getElementById("img18").src;
+    var mingcheng18=document.getElementById("title18").innerHTML;
+    var price18=document.getElementById("price18").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img18,mingcheng18,price18,time],onSuccess,onError);  
+ });  
+}
+function save19(){
+    var img19=document.getElementById("img19").src;
+    var mingcheng19=document.getElementById("title19").innerHTML;
+    var price19=document.getElementById("price19").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img19,mingcheng19,price19,time],onSuccess,onError);  
+ });  
+}
+function save20(){
+    var img20=document.getElementById("img20").src;
+    var mingcheng20=document.getElementById("title20").innerHTML;
+    var price20=document.getElementById("price20").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img20,mingcheng20,price20,time],onSuccess,onError);  
+ });  
+}
+function save21(){
+    var img21=document.getElementById("img21").src;
+    var mingcheng21=document.getElementById("title21").innerHTML;
+    var price21=document.getElementById("price21").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img21,mingcheng21,price21,time],onSuccess,onError);  
+ });  
+}
+function save22(){
+    var img22=document.getElementById("img22").src;
+    var mingcheng22=document.getElementById("title22").innerHTML;
+    var price22=document.getElementById("price22").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img22,mingcheng22,price22,time],onSuccess,onError);  
+ });  
+}
+function save23(){
+    var img23=document.getElementById("img23").src;
+    var mingcheng23=document.getElementById("title23").innerHTML;
+    var price23=document.getElementById("price23").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img23,mingcheng23,price23,time],onSuccess,onError);  
+ });  
+}
+function save24(){
+    var img24=document.getElementById("img24").src;
+    var mingcheng24=document.getElementById("title24").innerHTML;
+    var price24=document.getElementById("price24").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img24,mingcheng24,price24,time],onSuccess,onError);  
+ });  
+}
+function save25(){
+    var img25=document.getElementById("img25").src;
+    var mingcheng25=document.getElementById("title25").innerHTML;
+    var price25=document.getElementById("price25").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img25,mingcheng25,price25,time],onSuccess,onError);  
+ });  
+}
+function save26(){
+    var img26=document.getElementById("img26").src;
+    var mingcheng26=document.getElementById("title26").innerHTML;
+    var price26=document.getElementById("price26").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img26,mingcheng26,price26,time],onSuccess,onError);  
+ });  
+}
+function save27(){
+    var img27=document.getElementById("img27").src;
+    var mingcheng27=document.getElementById("title27").innerHTML;
+    var price27=document.getElementById("price27").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img27,mingcheng27,price27,time],onSuccess,onError);  
+ });  
+}
+function save28(){
+    var img28=document.getElementById("img28").src;
+    var mingcheng28=document.getElementById("title28").innerHTML;
+    var price28=document.getElementById("price28").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img28,mingcheng28,price28,time],onSuccess,onError);  
+ });  
+}
+function save29(){
+    var img29=document.getElementById("img29").src;
+    var mingcheng29=document.getElementById("title29").innerHTML;
+    var price29=document.getElementById("price29").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img29,mingcheng29,price29,time],onSuccess,onError);  
+ });  
+}
+function save30(){
+    var img30=document.getElementById("img30").src;
+    var mingcheng30=document.getElementById("title30").innerHTML;
+    var price30=document.getElementById("price30").innerHTML;
+     //创建时间  
+    var time = new Date().getTime(); 
+    db.transaction(function(tx){  
+     tx.executeSql('insert into contact values(?,?,?,?)',[img30,mingcheng30,price30,time],onSuccess,onError);  
+ });  
+}
+//sql语句执行成功后执行的回调函数  
+function onSuccess(tx,rs){  
+    alert("加入成功");  
+    loadAll();  
+}  
+//sql语句执行失败后执行的回调函数  
+function onError(tx,error){  
+    alert("操作失败，失败信息："+ error.message);  
+}
+
+//将所有存储在sqlLite数据库中的购物车全部取出来   
+function loadAll(){  
+var list = document.getElementById("list");  
+db.transaction(function(tx){  
+    //如果数据表不存在，则创建数据表  
+    tx.executeSql('create table if not exists contact(imgsrc text,mingcheng text,price text,createtime INTEGER)',[]);  
+    //查询所有联系人记录  
+    tx.executeSql('select * from contact',[],function(tx,rs){  
+       if(rs.rows.length>0){  
+    	   var result = "<div id='st1'>"; 
+            // result += "<tr><th>序号</th><th>商品图片</th><th>商品名称</th><th>价格</th><th>商品商家</th><th>操作</th></tr>";  
+            //result+="<thead><tr><th><label><input class='check-all check' type='checkbox'/>&nbsp;全选</label></th><th>商品</th><th>单价</th><th>数量</th><th>小计</th><th>操作</th></tr></thead><tbody>";
+            for(var i=0;i<rs.rows.length;i++){  
+                var row = rs.rows.item(i);  
+                //转换时间，并格式化输出  
+                var time = new Date();  
+                time.setTime(row.createtime);  
+                var timeStr = time.format("yyyy-MM-dd hh:mm:ss");  
+                //拼装一个表格的行节点  
+                // result += "<tr><td>"+(i+1)+"</td><td>"+"<img src="+row.imgsrc+" width=\"50\" height=\"50\"/>"+"</td><td>"+row.mingcheng+"</td><td>"+row.price+"</td><td>"+timeStr+"</td><td><input type='button' value='删除' onclick='del("+row.mingcheng+")'/></td></tr>";  
+
+                result+='<div class="prt-lt"><div class="lt-lt"><img src='+row.imgsrc+' width=\"50\" height=\"50\"></div><div class="lt-ct"><p>'+row.mingcheng+'</p><p class="pr">¥<span class="price">'+row.price+'</span></p></div><div class="lt-rt"><input type="button" class="minus"  value="-"><input type="text" class="result" value="0"><input type="button" class="add" value="+"></div></div>';
+            }  
+            list.innerHTML=result;
+            fn1();
+       }else{  
+            list.innerHTML = "目前数据为空，赶紧开始加入购物车吧";  
+       }   
+    });  
+});  
+} 
+
+//删除购物车信息  
+function del(mingcheng){  
+ db.transaction(function(tx){  
+    //注意这里需要显示的将传入的参数phone转变为字符串类型  
+    tx.executeSql('delete from contact where mingcheng=?',[String(mingcheng)],onSuccess,onError);  
+});  
+}  
+//格式化时间的format函数
+Date.prototype.format = function(format)  
+{  
+var o = {  
+"M+" : this.getMonth()+1, //month  
+"d+" : this.getDate(),    //day  
+"h+" : this.getHours(),   //hour  
+"m+" : this.getMinutes(), //minute  
+"s+" : this.getSeconds(), //second  
+"q+" : Math.floor((this.getMonth()+3)/3),  //quarter  
+"S" : this.getMilliseconds() //millisecond  
+}  
+if(/(y+)/.test(format)) format=format.replace(RegExp.$1,  
+(this.getFullYear()+"").substr(4 - RegExp.$1.length));  
+for(var k in o)if(new RegExp("("+ k +")").test(format))  
+format = format.replace(RegExp.$1,  
+RegExp.$1.length==1 ? o[k] :  
+("00"+ o[k]).substr((""+ o[k]).length));  
+return format;  
+} 
+
+</script>
+</body>
+</html>

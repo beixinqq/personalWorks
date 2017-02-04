@@ -1,0 +1,35 @@
+
+/*滚动条*/
+.scrollBox{
+    width: 2rem;
+    height: 2rem;
+    z-index: 999;
+    position: fixed;
+    bottom: 1.190rem;
+    right: 0.44rem;
+    padding-top: 3px;
+}
+#cart{
+   bottom: 3.5rem;
+}
+.scrollBox a{
+    position: absolute; 
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.9;
+    /*filter:alpha(opacity=90);IE6-8*/
+    cursor: pointer;
+    background: rgba(1,135,206,0.8);
+    color: white;
+    font-size: 1.228rem;
+    line-height: 2.438rem;
+    text-align: center;
+    padding-top: -2px;
+
+}
+.scrollBox a:hover{
+    cursor: pointer;
+    background: rgba(138,138,138,0.2);
+    color: rgba(1,135,206,1);
+}

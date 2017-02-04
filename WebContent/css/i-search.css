@@ -1,0 +1,211 @@
+.page{
+	/*position: relative;
+	overflow: hidden;*/
+}
+.searchbox{
+	position:absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	font-size: 0.79rem/1.5 arial;
+	z-index: 99999;
+}
+.searchbox .sb-search{
+	background-color: rgb(1,135,206);
+	position: relative;
+	box-shadow: 0 2px 2px rgba(0,0,0,.1);
+}
+.searchbox .sb-search form{
+	position: relative;
+	margin-left: 2.255rem;
+	margin-right: 0.6096rem;
+}
+.searchbox .sb-search .s-combobox{
+	overflow: hidden;
+}
+.searchbox .sb-search .s-combobox-input-wrap{
+	vertical-align: middle;
+	position: relative;
+	height: 1.9504rem;
+	margin: 0.36rem 0  0.36rem  0.36rem;
+	padding: 0 1.828rem 0 0.128rem;
+	box-sizing:border-box;
+	border-radius: 2px;
+	overflow: hidden;
+	background-color: #fff;
+	border: 1px solid #eee;
+}
+.searchbox .sb-search form input[type=search]{
+	float: left;
+	width: 100%;
+	background: transparent;
+	vertical-align: middle;
+	height: 100%锛�
+	box-shadow:none;
+	-webkit-appearance:none;
+	border: 0;
+	outline: 0;
+	color: #333;
+	font-size: 0.8533rem;
+	padding-top: 0.4266rem;
+	padding-left: 0.4266rem;
+}
+.searchbox .sb-search .s-combobox-placeholder{
+	position: absolute;
+	top: 0.8533rem;
+	left: 2.3161rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	max-width: 80%;
+}
+label{
+cursor: default;
+}
+.searchbox .sb-search .submit_glyphicon{
+	position: absolute;
+	right: 0.7828rem;
+	top: 1.0095rem;
+	margin-top: -0.4266rem;
+	width: 0.914rem;
+	height: 0.914rem;
+	border: 0;
+	color:rgb(69,69,69);
+	padding: 0.4266rem 0.3047rem
+	box-sizing:initial;
+}
+.searchbox .sb-search form input[type=reset]{
+	position: absolute;
+	right: 0;
+	top: 50%;
+	height: 1.9504rem;
+	width: 30px;
+	margin-top: -0.975rem;
+	border: 0;
+	color: transparent;
+	display: none;
+	z-index: 1;
+}
+.searchbox .sb-search a{
+	color: rgba(255,255,255,0.2);
+ }
+.searchbox .sb-search .close{
+	padding: 0.487rem;
+	border: 0;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	width: 2.4380rem;
+	height: 1.5238rem;
+	line-height: 1.5238rem;
+	font-size: 1.2rem;
+}
+
+/*鎼滅储鍟嗗搧*/
+.srp{
+	/*position: relative;
+	left: 5px;
+	right: 5px;
+	top: 0.29rem;
+	width: 100%;
+	font-size: 20px;
+	color: red;*/
+	/*position: relative;*/
+	background: #eee;
+
+}
+.srp .list_box{
+	width: 100%;
+	margin-top: 0.4142rem;
+}
+.srp .list_box .list_item{
+	display: block;
+	position: relative;
+	overflow: hidden;
+	display: webkit-box;
+	display: webkit-flex;
+	display: ms-flexbox;
+	display: flex;
+	height: 6.371rem;
+	background: #fff;
+
+}
+.srp .list_box .list_item .li_img_wap{
+	position: relative;
+	width: 7.8571rem;
+	height: 7.8571rem;
+}
+.srp .list_box .list_item .li_img_wap .li_img{
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+	background-color: #f7f7f7;
+	top: 5%;
+	left: 6%;
+}
+.img-ks-lazyload{
+	opacity: 1;
+}
+.srp .list_box .list_item .li_info{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	webkit-flex:1;
+	flex:1;
+	margin-left: 0.467rem;
+	padding-right: 0.267rem;
+	border-bottom: 1px solid #eee;
+
+}
+.srp .list_box .list_item .li_info h3{
+	font-size: 0.8rem;
+	line-height: 2.48rem;
+	color: #333;
+	height: 2.48rem;
+	overflow: hidden;
+	padding-top: 0.842rem;
+}
+.srp .list_box .list_item .li_info .lii_sold{
+	font-size: 0.8571rem;
+	line-height: 0.8571rem;
+	color: #999;
+	margin-top: 1.3428rem;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+}
+.icon-list{
+	padding-top: 0.6428rem;
+	height: 0.542rem;
+	overflow: hidden;
+}
+.srp .list_box .list_item .li_info .lii_price{
+	font-size: 1.142rem;
+	line-height: 1.142rem;
+	font-weight: 500;
+	margin-top: 1rem;
+	color: red;
+};
+.price{
+	
+}
+.srp .list_box .list_item .li_info .lii_fee{
+	font-size: 0.85rem;
+	color: yellow;
+	margin-left: 0.642rem;
+	color:rgb(69,69,69);
+}
+.cart{
+	position: relative;
+	bottom: 1.1904rem;
+	background-color: rgb(1,135,206);
+	border-radius: 10px;
+	font-size: 1.071rem;
+	color: white;
+	padding:5px;
+	margin-left: 55%;
+	margin-bottom:30px;
+}
+.cart a{
+	color: white;
+}

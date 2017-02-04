@@ -1,0 +1,99 @@
+.head{
+	width: 100%;
+	height: 3.173333rem;
+	line-height: 3.173333rem;
+	border-bottom: 1px solid #c8c8c8;
+	color: rgb(69,69,69);
+	font-size: 1.453333rem;
+	background-color: #f7f7f8;
+	margin-bottom: 2.1428rem;
+}
+.head .back{
+	margin-left: 10px;
+	color: rgb(69,69,69);
+	font-size: 1rem;
+}
+.head .title{
+   margin-left: 35%;
+}
+.mlogin{
+	margin-top: .46667rem;
+}
+.mlogin{
+	font-size: .426667rem;
+}
+input,select,textarea{
+	font-size: 100%;
+}
+
+.mlogin .field{
+	display: -webkit-box;
+	display: -webkit-flex;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	border-bottom: 1px solid #ddd;
+	padding: .373333rem .266667rem;
+	color: #6c6c6c;
+	background-color:#fff;
+	text-align: left; 
+	margin-bottom: 1.4rem;
+}
+.field .label{
+	width: 4.5rem;
+	font-size: 1.1019rem;
+	color: rgb(100,100,100);
+}
+.field .field-control{
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+}
+.field .field-control input{
+	-webkit-appearance:none;
+	width: 96%;
+	border: 0;
+	font-size: 0.9999rem;
+	background-color: transparent;
+	margin-left: 1.0rem;
+	padding-top: .3rem;
+	padding-bottom: .3rem;
+
+}
+.icon-clear{
+	visibility: hidden;
+	margin-right: 5px;
+}
+.margin .iconfont{
+	font-size: .42667rem;
+	color: #6c6c6c;
+}
+#loginForm .checkcode-wrap{
+	margin: .26666rem .26666rem 0;
+}
+.submit button{
+	width:80%;
+	float: left;
+	height: 2.25333rem;
+	line-height: 2.25333rem;
+	border: 1px solid #f40;
+	border-radius: 5px;
+	color: #fff;
+	background-color: rgb(1,135,206);
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	font-weight: 600;
+	letter-spacing: 10px;
+	font-size: 1.49rem;
+
+}
+.submit button:after{
+	clear: both;
+}
+.submit button{
+	color: rgb(69,69,69);
+	background: rgb(1,135,206);
+	border-color:rgb(1,135,206); 
+}
+.submit button:disabled{
+	color: #fff;
+}

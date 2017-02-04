@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>掌上购物超市商城</title>
+<script src="../js/prefixfree.min.js"></script>
+<style media="screen">
+*{margin:0;padding:0;}
+html,body{border:0;}
+a{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:14px/1.5 Tahoma,Arial,"Microsoft Yahei";color:black;outline:0;}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;}
+body{min-width:320px;position:relative;background:black;}
+img{display:block;max-width:100%;vertical-align:middle;transition:all .3s linear;}
+*,*:before,*:after{box-sizing:border-box;}
+
+/* page css begin */
+html{
+	font-size: 10px;
+}
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+.container{
+	height: 100%;
+	position: relative;
+	transition: all 1s linear;
+}
+.page{
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.p1{
+	background: url(../images/i1.png) no-repeat;
+	background-size: 100% 100%;
+}
+.slide{
+	position: absolute;
+	left: 50%;
+	margin-left: -2rem;
+	width: 3rem;
+	height: 3rem;
+	background: rgba(69, 69,69, 0.7);
+	border-radius: 50%;
+	opacity: .7;
+	color: #fff;
+}
+.slide:after{
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -.6rem;
+	width: 1.2rem;
+	height: 1.2rem;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+.slide.up{
+	top: 1.5rem;
+}
+.slide.up:after{
+	margin-top: -.3rem;
+	transform: rotate(-135deg);
+}
+.slide.down{
+	bottom: 1.5rem;
+}
+.slide.down:after{
+	margin-top: -.9rem;
+	transform: rotate(45deg);
+}
+.p2{
+	padding-top: 6.5rem;
+	background: url(../images/i2.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.p3{
+	padding-top: 6.5rem;
+	background: url(../images/i3.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+	.container.to-p2{
+		transform: translate3d(0,-100%,0);
+	}
+	.container.to-p3{
+		transform: translate3d(0,-200%,0);
+	}
+  .tiaoguo{
+    position: fixed;;
+    top: 30px;
+    right: 30px;
+    border-radius: 10px;
+    padding: 0.29rem;
+    background-color: rgba(69, 69, 69, 0.5);
+  }
+  .tiaoguo a{
+        color: #fff;
+        font-size: 0.8rem;
+  }
+	.vd-container{
+
+		position: fixed;
+		bottom: 14.280rem;
+		right: 2.142rem;
+
+		border: 2px solid #cedodo;
+
+	}
+	.vd-container h3{
+		background-color: rgba(69, 69, 69, 0.3);
+		padding: 0.71rem;
+		font-size: 2rem;
+		color: rgba(1, 135, 206, 1);;
+		font-weight: bold;
+		margin-bottom: 2rem;
+		transform: rotate(-15deg);
+		border-radius: 1.428rem;
+	}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<!-- p1 -->
+	<section class="page p1">
+		<a href="javascript:;" class="slide down"></a>
+	</section>
+	<!-- p2 -->
+	<section class="page p2">
+		<a href="javascript:;" class="slide up"></a>
+		<a href="javascript:;" class="slide down"></a>
+	</section>
+	<!-- p3 -->
+	<section class="page p3">
+		<a href="javascript:;" class="slide up"></a>
+	</section>
+</div>
+<div class="vd-container">
+	<h3>掌上购物超市商城</h3>
+</div>
+<div class="tiaoguo"><a href="i-index.html">跳过广告</a></div>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/jquery-1.10.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		//preventDefault
+		$(document).on("touchmove",function(event){
+			event.preventDefault();
+		})
+		function addC(x,y,z){
+			$(x).on(y,function(){
+				$(".container").addClass(z);
+			})
+		}
+		function removeC(m,n,h){
+			$(m).on(n,function(){
+				$(".container").removeClass(h);
+			})
+		}
+		//p1 -- p2
+		addC('.p1','swipeUp','to-p2');
+		addC('.p1 .down','tap','to-p2');
+		//p2 -- p1
+		removeC('.p2','swipeDown','to-p2');
+		removeC('.p2 .up','tap','to-p2');
+		//p2 -- p3
+		addC('.p2','swipeUp','to-p3');
+		addC('.p2 .down','tap','to-p3');
+		//p3 -- p2
+		removeC('.p3','swipeDown','to-p3');
+		removeC('.p3 .up','tap','to-p3');
+
+
+    })
+</script>
+</body>
+</html>
+<script type="text/javascript">
+    (function (doc, win) {
+        var docEI = doc.documentElement;
+        var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        var recalc = function () {
+            var clientWidth = docEI.clientWidth;
+            if (!clientWidth)return;
+            docEI.style.fontSize = 14* (clientWidth / 320) + 'px';
+        };
+        if (!doc.addEventListener)return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
